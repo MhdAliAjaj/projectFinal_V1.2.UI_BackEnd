@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends Model
 {
+    protected $guard_name = 'web';  //هاي مشان انو عم نضيف بالسيدر الادمن باكتر من جدول لذلك نحتاج الى اضافة هذا السطر
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
     protected $fillable = [
         'name',
@@ -42,5 +43,11 @@ class Customer extends Model
 
 
 
+
+    //هذا التعيديل لمكتبة السباتي 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
 }
