@@ -13,6 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $x=10;   //this draft for test branch 
     }
 
     /**
