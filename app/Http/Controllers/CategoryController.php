@@ -13,7 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $x=10;   //this draft for test branch 
+        //$x=10;   //this draft for test branch 
+        //for tesy pull
     }
 
     /**
