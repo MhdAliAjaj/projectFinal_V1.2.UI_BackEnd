@@ -15,9 +15,8 @@ class Category extends Model
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
     protected $fillable = [
         'name',
-        'email',
-        'password',
-        'roles_name',
+        'user_id',
+        
     ];
 
     //relations:

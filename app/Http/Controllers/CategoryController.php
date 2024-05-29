@@ -4,15 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create-category|edit-category|delete-category', ['only' => ['index','show']]);
+        $this->middleware('permission:create-category', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-category', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-category', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $categories=Category::with('userR')->get();
+        // dd($categories?->userR?->name);
+        
+        return view('category.index',compact('categories'));
     }
 
     /**
@@ -20,7 +32,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $user=User::all();
+        return view('category.create',compact('user'));
     }
 
     /**
@@ -28,8 +41,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name'=>['required','string'],
+            'user_id'=>['required','integer','exists:users,id'],
+                    ]);
+                    $categories=new Category();
+                    $categories->name=$request->name;
+                    $categories->user_id=$request->user_id;
+                    $categories->save();
+                    return redirect()->route('category.index');
+
+                
+                }
 
     /**
      * Display the specified resource.
@@ -44,22 +67,36 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit',compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, string $id)
     {
-        //
-    }
+        $request->validate([
+            'name'=>['required','string'],
+            'user_id'=>['required','integer','exists:users,id'],
+                    ]);
+                    $categories=new Category();
+                    $categories->name=$request->name;
+                    $categories->user_id=$request->user_id;
+                    $categories->save();
+           
+                    return redirect()->route('category.index');    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('category.index');
     }
-}
+
+  
+
+     
+    }
+
