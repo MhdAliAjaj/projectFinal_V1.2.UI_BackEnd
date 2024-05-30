@@ -21,9 +21,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::with('userR')->get();
-        // dd($categories?->userR?->name);
+        $categories=Category::with('user')->get();
         
+      
         return view('category.index',compact('categories'));
     }
 
@@ -77,11 +77,11 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name'=>['required','string'],
-            'user_id'=>['required','integer','exists:users,id'],
+            'user_id'=>['integer','exists:users,id'],
                     ]);
-                    $categories=new Category();
-                    $categories->name=$request->name;
-                    $categories->user_id=$request->user_id;
+                    $categories= Category::find($id);
+                    $categories->name=$request->name??$categories->name;
+                    $categories->user_id=$request->user_id??$categories->user_id;
                     $categories->save();
            
                     return redirect()->route('category.index');    }

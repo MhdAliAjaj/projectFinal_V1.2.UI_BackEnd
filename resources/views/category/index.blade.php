@@ -23,24 +23,25 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $categor->name }}</td>
-                    <td>{{ $categor->userR?->name}}</td>
+                    <td>{{ $categor->user?->name}}</td>
                    
                     <td>
                         <form action="{{ route('category.destroy', $categor->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-
-                            <a href="{{ route('category.show', $categor->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                            
+                            {{-- <a href="{{ route('category.show', $categor->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a> --}}
 
                             @can('edit-category')
                                 <a href="{{ route('category.edit', $categor->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
                             @endcan
-
+                           
                             @can('delete-category')
                                 @if (Auth::user()->id != $categor->id)
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this user?');"><i class="bi bi-trash"></i> Delete</button>
                                 @endif
                             @endcan
+                   
                         </form>
                     </td>
                 </tr>

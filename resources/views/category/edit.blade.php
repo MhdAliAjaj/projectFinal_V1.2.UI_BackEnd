@@ -10,8 +10,9 @@
 <body>
 <h1>Create New user</h1>
 <form action={{route('category.update',$category->id)}} method="POST">
-    @csrf
+    
     @method('PUT')
+    @csrf
     <input type="text" name="name" id="" placeholder="category name">
 
     <input type="submit" >
