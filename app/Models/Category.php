@@ -16,12 +16,12 @@ class Category extends Model
     protected $fillable = [
         'name',
         'user_id',
-       
+
     ];
 
     //relations:
     //1.category & user   Many to one
-    public function userR(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
