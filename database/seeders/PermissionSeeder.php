@@ -7,6 +7,7 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
+    
     /**
      * Run the database seeds.
      */
