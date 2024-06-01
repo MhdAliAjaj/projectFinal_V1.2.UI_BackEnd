@@ -18,6 +18,7 @@ class RoleSeeder extends Seeder
         $employee = Role::create(['name' => 'Employee']);
         //create role Customer
         $customer = Role::create(['name' => 'Customer']);
+        $admin->givePermissionTo()->all;
 
         $employee->givePermissionTo([
             'show-orders-services',

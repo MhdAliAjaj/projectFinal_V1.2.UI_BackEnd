@@ -15,14 +15,13 @@ class Category extends Model
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
     protected $fillable = [
         'name',
-        'email',
-        'password',
-        'roles_name',
+        'user_id',
+
     ];
 
     //relations:
     //1.category & user   Many to one
-    public function userR(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

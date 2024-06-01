@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 
-
-
-
 class SuperAdminSeeder extends Seeder
 {
     /**
@@ -29,11 +26,6 @@ class SuperAdminSeeder extends Seeder
         ]);
         $admin->assignRole('Admin');
     
-
-
-
-        
-
         // Creating employee User
         $employee = User::create([
             'name' => 'Syed Ahsan Kamal', 
@@ -44,13 +36,11 @@ class SuperAdminSeeder extends Seeder
         $employee->assignRole('Employee');
 
         // Creating customer User
-        $customer = Customer::create([
+        $customer = User::create([
             'name' => 'Abdul Muqeet', 
             'email' => 'muqeet@allphptricks.com',
             'password' => Hash::make('muqeet1234'),
-            'gender'=>'male',
-            'birthDate'=>'1994-08-05',
-            'phone'=>'0993996935'
+            'roles_name'=>'Customer',
 
         ]);
         $customer->assignRole('Customer');
