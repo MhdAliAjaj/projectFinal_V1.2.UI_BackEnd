@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -41,13 +42,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+     
         $request->validate([
             'name'=>['required','string'],
-            'user_id'=>['required','integer','exists:users,id'],
+            'user_id'=>['integer','exists:users,id'],
                     ]);
                     $categories=new Category();
                     $categories->name=$request->name;
-                    $categories->user_id=$request->user_id;
+                    $categories->user_id= Auth::id(); ;
                     $categories->save();
                     return redirect()->route('category.index');
 
@@ -81,7 +83,7 @@ class CategoryController extends Controller
                     ]);
                     $categories= Category::find($id);
                     $categories->name=$request->name??$categories->name;
-                    $categories->user_id=$request->user_id??$categories->user_id;
+                    $categories->user_id= Auth::id(); ;
                     $categories->save();
            
                     return redirect()->route('category.index');    }

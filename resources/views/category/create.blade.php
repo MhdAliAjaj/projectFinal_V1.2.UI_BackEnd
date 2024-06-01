@@ -14,14 +14,14 @@
     {{-- @method('POST') --}}
     <input type="text" name="name" id="" placeholder="name">
     
-<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="user_id">
+{{-- <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="user_id">
    @foreach ( $user  as $use )
    <option value={{$use->id}}>{{$use->name}}</option>
 
    @endforeach
 
     
-  </select>
+  </select> --}}
 
     <input type="submit" >
 </form>

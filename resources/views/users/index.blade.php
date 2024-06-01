@@ -38,14 +38,30 @@
 
                             <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
 
-                            @can('edit-user')
+                            {{-- @can('edit-user')
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
-                            @endcan
+                            @endcan --}}
+                            @can('edit-user')
+                   @if(Auth::user()->role === 'admin' && $user->role !== 'admin')
+                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                 @elseif(Auth::user()->role !== 'admin')
+                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">
+                <i class="bi bi-pencil-square"></i> Edit
+                  </a>
+    @endif
+@endcan
 
                             @can('delete-user')
-                                @if (Auth::user()->id != $user->id)
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this user?');"><i class="bi bi-trash"></i> Delete</button>
-                                @endif
+                            @if (Auth::user()->id == $user->id|| $role ==null )
+                            {{-- This is the current user, don't show the delete button --}}
+                        @elseif ($role !== 'Admin' )
+                            {{-- This user has admin role, show the delete button --}}
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this user?');"><i class="bi bi-trash"></i> Delete</button>
+                        @else
+                            {{-- This user does not have admin role, don't show the delete button --}}
+                        @endif
                             @endcan
                         </form>
                     </td>

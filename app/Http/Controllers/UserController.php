@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -74,7 +75,7 @@ class UserController extends Controller
      */
     public function edit(User $user): View
     {
-        // Check Only Super Admin can update his own Profile
+        //Check Only Super Admin can update his own Profile
         if ($user->hasRole('Admin')){
             if($user->id != auth()->user()->id){
                 abort(403, 'USER DOES NOT HAVE THE RIGHT PERMISSIONS');
@@ -86,28 +87,52 @@ class UserController extends Controller
             'roles' => Role::pluck('name')->all(),
             'userRoles' => $user->roles->pluck('name')->all()
         ]);
+        
     }
 
     /**
      * Update the specified resource in storage.
-     */
-    public function update(UpdateUserRequest $request, User $user): RedirectResponse
-    {
-        $input = $request->all();
+    //  */
+    // public function update(UpdateUserRequest $request, User $user): RedirectResponse
+    // {
+    //     $input = $request->all();
  
-        if(!empty($request->password)){
-            $input['password'] = Hash::make($request->password);
-        }else{
-            $input = $request->except('password');
-        }
+    //     if(!empty($request->password)){
+    //         $input['password'] = Hash::make($request->password);
+    //     }else{
+    //         $input = $request->except('password');
+    //     }
         
-        $user->update($input);
+    //     $user->update($input);
 
-        $user->syncRoles($request->roles);
+    //     $user->syncRoles($request->roles);
 
-        return redirect()->back()
-                ->withSuccess('User is updated successfully.');
+    //     return redirect()->back()
+    //             ->withSuccess('User is updated successfully.');
+    // }
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
+{
+    // التحقق من دور المستخدم الحالي ودور المستخدم الذي يتم تعديله
+    if (Auth::user()->role === 'admin' && $user->role === 'admin') {
+        return redirect()->route('users.index')->withErrors('Admin users cannot edit other admin users.');
     }
+
+    $input = $request->all();
+
+    if (!empty($request->password)) {
+        $input['password'] = Hash::make($request->password);
+    } else {
+        $input = $request->except('password');
+    }
+
+    $user->update($input);
+
+    $user->syncRoles($request->roles);
+    return redirect()->route('users.index')->with('success', 'User is updated successfully.');
+
+    // return redirect()->back()->withSuccess('User is updated successfully.');
+}
+
 
     /**
      * Remove the specified resource from storage.

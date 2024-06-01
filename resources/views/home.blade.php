@@ -23,6 +23,7 @@
                     <a class="btn btn-success" href="{{ route('category.index') }}">
                         <i class="bi bi-people"></i> Manage category</a>
                         @endcanany
+                     
                
                 </div>
             </div>
