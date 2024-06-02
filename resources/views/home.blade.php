@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+<<<<<<< Updated upstream
                     @canany(['create-user', 'edit-user', 'delete-user'])
                     <a class="btn btn-success" href="{{ route('users.index') }}">
                         <i class="bi bi-people"></i> Manage Users</a>
@@ -25,6 +26,8 @@
                         @endcanany
                      
                
+=======
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
