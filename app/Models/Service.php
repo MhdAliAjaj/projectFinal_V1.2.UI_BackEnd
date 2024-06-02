@@ -31,12 +31,12 @@ class Service extends Model
         return $this->hasMany(Order::class);
     }
     //2.service & category   Many To One
-    public function category(): BelongsTo
+    public function categoryR(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
     //3.service & user   Many To One
-     public function user(): BelongsTo
+     public function userR(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

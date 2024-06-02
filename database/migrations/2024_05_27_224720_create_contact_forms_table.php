@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contact_forms', function (Blueprint $table) {
             $table->id();
             $table->text('message');//ارسال رسالة على سبيل المثال ضمن نموذج الاتصال
-            $table->foreignId('user_id')->references('id')->on('users'); //رقم الزبون
+            $table->foreignId('customer_id')->references('id')->on('customers');
             $table->timestamps();
         });
     }

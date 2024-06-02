@@ -16,20 +16,21 @@ class RoleSeeder extends Seeder
         $admin=Role::create(['name' => 'Admin']);
         //create role Employee
         $employee = Role::create(['name' => 'Employee']);
-        //create role Customer
-        $customer = Role::create(['name' => 'Customer']);
-        $admin->givePermissionTo()->all;
+        // //create role Customer
+        // $customer = Role::create(['name' => 'Customer']);
+        // $admin->givePermissionTo()->all;
 
         $employee->givePermissionTo([
             'show-orders-services',
             'handel-order-service',
         ]);
 
-        $customer->givePermissionTo([
-            'show-services',
-            'show-details-service',
-            'order-service',
-            'send-message'
-        ]);
+        //تم حذف رول Customer مع صلاحياته لانه سيتم استدعائه عن طريق Api
+        // $customer->givePermissionTo([
+        //     'show-services',
+        //     'show-details-service',
+        //     'order-service',
+        //     'send-message'
+        // ]);
     }
 }
