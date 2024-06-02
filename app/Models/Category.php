@@ -16,12 +16,16 @@ class Category extends Model
     protected $fillable = [
         'name',
         'user_id',
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> bc08b8a (add manage user:employee and admin)
     ];
 
     //relations:
     //1.category & user   Many to one
-    public function user(): BelongsTo
+    public function userR(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

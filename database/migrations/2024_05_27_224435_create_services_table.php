@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('price');
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->foreignId('user_id')->references('id')->on('users');
+            
             $table->timestamps();
         });
     }

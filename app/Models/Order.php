@@ -2,23 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
     protected $fillable = [
-        'user_id',
+        'customer_id',
         'service_id',
         'describtion',
         'status',
-        //i am push test
     ];
 
     //relations:
@@ -28,8 +26,8 @@ class Order extends Model
         return $this->belongsTo(Service::class);
     }
     //2.order & customer Many to one
-    public function user(): BelongsTo
+    public function customerR(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 }
