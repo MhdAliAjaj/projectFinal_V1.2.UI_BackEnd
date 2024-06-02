@@ -18,6 +18,7 @@ class Order extends Model
         'service_id',
         'describtion',
         'status',
+        //i am push test
     ];
 
     //relations:
