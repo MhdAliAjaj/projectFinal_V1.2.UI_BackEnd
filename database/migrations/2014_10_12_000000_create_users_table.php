@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('roles_name',['Admin','Employee']);//تم حذف رول Customer
+            $table->enum('roles_name',['Admin','Employee','Customer'])->default('Customer');
             $table->rememberToken();
             $table->timestamps();
         });
