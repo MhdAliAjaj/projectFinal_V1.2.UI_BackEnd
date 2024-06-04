@@ -44,3 +44,7 @@ Route::get('category/{category}/edit', [CategoryController::class, 'edit'])->nam
 Route::put('category/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

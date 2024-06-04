@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
@@ -16,14 +15,14 @@ class ContactForm extends Model
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
     protected $fillable = [
         'message',
-        'user_id', 
+        'customer_id', 
     ];
 
 
     //relations:
     //1.contact-form & customer Many To One
-    public function user(): BelongsTo
+    public function customerR(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 }
