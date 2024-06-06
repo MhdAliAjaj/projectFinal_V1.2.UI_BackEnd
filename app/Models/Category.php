@@ -26,7 +26,7 @@ class Category extends Model
         return $this->belongsTo(User::class);
     }
     //2.category & service   One to Many
-    public function servicesR(): HasMany
+    public function services(): HasMany
     {
         return $this->hasMany(Service::class);
     }

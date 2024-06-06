@@ -49,6 +49,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::resource('services', ServiceController::class);
+Route::get('str', [ServiceController::class, 'str'])->name('str');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
