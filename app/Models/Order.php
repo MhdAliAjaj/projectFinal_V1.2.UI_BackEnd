@@ -22,7 +22,7 @@ class Order extends Model
 
     //relations:
     //1.order & service Many to one
-    public function serviceR(): BelongsTo
+    public function service(): BelongsTo
     {
         return $this->belongsTo(Service::class);
     }

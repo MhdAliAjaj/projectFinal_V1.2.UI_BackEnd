@@ -26,7 +26,7 @@ class Service extends Model
 
     //relations:
     //1.service & order   One To Many
-    public function ordersR(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }

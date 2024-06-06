@@ -74,12 +74,12 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
     //2.user & service   One To Mane
-    public function servicesR(): HasMany
+    public function services(): HasMany
     {
         return $this->hasMany(Service::class);
     }
     //3.user & category   One To Mane
-    public function categorysR(): HasMany
+    public function categories(): HasMany
     {
         return $this->hasMany(Category::class);
     }
