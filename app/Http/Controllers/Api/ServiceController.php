@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        
+        $this->middleware('auth')->only('show');
+    }
     public function show(Service $service)
     {
-    
+
         $service->load(['category', 'user']);
         return new ServiceResource($service);
     }
