@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <from action="{{route('services.update' , $service->id)}}" method="POST">
+        <form action="{{route('services.update' , $service->id)}}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3"><br>
@@ -25,13 +25,7 @@
                     @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
-                </select>
-                <br>
-                <select class="form-select" id="" aria-label="Default select example" name="category_id">
-                    @foreach($users as $user)
-                    <option value="{{$user->id}}">{{$user->name}}</option>
-                    @endforeach
-                </select>
+                </select>             
                 <br>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\ServiceRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
@@ -17,13 +18,7 @@ class ServiceController extends Controller
         $this->middleware('permission:create-service', ['only' => ['create','store']]);
         $this->middleware('permission:edit-service', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-service', ['only' => ['destroy']]);
-        // $this->middleware('permission:show-details-service', ['only' => ['']]);
-        // $this->middleware('permission:show-report-orde', ['only' => ['']]);
-        // $this->middleware('permission:order-servic', ['only' => ['']]);
-        // $this->middleware('permission:send-messag', ['only' => ['']]);
-        // $this->middleware('permission:show-orders-service', ['only' => ['']]);
-        // $this->middleware('permission:handel-order-servic', ['only' => ['']]);
-
+       
     }
     /**
      * Display a listing of the resource.
@@ -49,25 +44,19 @@ class ServiceController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ServiceRequest $request)
-    {
-        return $request;
-        $request->validated();
-           $service = new Service();
-           $service->title = $request->title;
-           $service->details = $request->details;
-           $service->price = $request->price;
-           $service->category_id = $request->category_id;
-           $service->user_id = $request->user_id;
-           $service->save();
-        
-        // Service::create([
-        //     'title' => $request->title,
-        //     'details' => $request->details,
-        //     'price' => $request->price,
-        //     'category_id' => $request->category_id,
-        //     'user_id' => $request->user_id,
-        // ]);
-        return redirect()->route('services.index');
+    { 
+    // Request->ServiceRequest استدعاء الفاليديشن من ملف 
+    $request->validated(); 
+
+    $services=new Service();
+    $services->title=$request->title;
+    $services->details=$request->details;
+    $services->price=$request->price;
+    $services->category_id=  $request->category_id; 
+    $services->user_id=Auth::id(); 
+    $services->save();
+
+    return redirect()->route('services.index');
     }
 
     public function show(Service $service)
@@ -93,20 +82,14 @@ class ServiceController extends Controller
     public function update(ServiceRequest $request, int $id)
     {
         $request->validated();
+        
         $services = Service::findOrFail($id);
-           $services->title = $request->title;
-           $services->details = $request->details;
-           $services->price = $request->price;
-           $services->category_id = $request->category_id;
-           $services->user_id = $request->user_id;
-           $service->save();
-        //    $services->update([
-        //     'title' => $request->title,
-        //     'details' => $request->details,
-        //     'price' => $request->price,
-        //     'category_id' => $request->category_id,
-        //     'user_id' => $request->user_id,
-        // ]);
+        $services->title = $request->title;
+        $services->details = $request->details;
+        $services->price = $request->price;
+        $services->category_id =  $request->category_id;
+        $services->user_id =  Auth::id();
+        $services->save();
         return redirect()->route('services.index');
     }
 
@@ -119,12 +102,13 @@ class ServiceController extends Controller
         return redirect()->route('services.index');
     }
 
-    public function str(Request $request)
+    // يقوم بالبحث عن خدمة معينة search تابع ال  
+    public function search(Request $request)
     {
         $request->validate([
-         'str' => ['string'],
+         'search' => ['string'],
         ]);
-        $services = Service::where('title' , 'LIKE','%'.$request->str.'%')->get();
+        $services = Service::where('title' , 'LIKE','%'.$request->search.'%')->get();
         return view('services.index',compact('services'));
     }
 }
