@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <from action="" method="">
+        <form action="" method="">
             @csrf
             <div class="mb-3"><br>
                 <label class="form-label" id="">title</label>
@@ -22,9 +22,6 @@
                 <br> 
                 <label class="form-label" id="">categoryName</label> 
                 <input type="text" class="form-control" id="" name="categoryName" placeholder="categoryName" value="{{$service->category->name}}">
-                <br>
-                <label class="form-label" id="">userName</label> 
-                <input type="text" class="form-control" id="" name="userName" placeholder="userName" value="{{$service->user->name}}">
                 <br>
             </div>
         </form>   

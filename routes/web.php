@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,11 +46,8 @@ Route::get('category/{category}/edit', [CategoryController::class, 'edit'])->nam
 Route::put('category/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::resource('services', ServiceController::class);
-Route::get('str', [ServiceController::class, 'str'])->name('str');
+Route::get('search', [ServiceController::class, 'search'])->name('search');
 
+Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index');
+Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual');
