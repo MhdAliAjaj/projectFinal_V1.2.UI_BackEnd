@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('details');
+            // $table->boolean('available')->default(false);
             $table->integer('price');
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->foreignId('user_id')->references('id')->on('users');
