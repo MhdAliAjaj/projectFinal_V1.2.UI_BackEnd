@@ -29,10 +29,6 @@ Route::controller(AuthController::class)->group(function () {
 
 
 });
-
-<<<<<<< HEAD
 // Route::post()
-=======
 Route::get('/service',[ServiceController::class,'index']);
 Route::get('/information',[CompanyInfoController::class,'info']);
->>>>>>> d41b6b0c93b485c1650eac6af2484122fd1d6612
