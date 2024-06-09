@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('services', ServiceController::class);
 Route::get('str', [ServiceController::class, 'str'])->name('str');
 
+Route::get('order', [OrdersController::class, 'index'])->name('order.index');
+Route::get('order/{order}', [OrdersController::class, 'handle'])->name('order.handle');
+
+ 

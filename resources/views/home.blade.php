@@ -28,6 +28,10 @@
                     <a class="btn btn-success" href="{{ route('services.index') }}">
                         <i class="bi bi-people"></i> Manage Services</a>
                         @endcanany
+                        @canany(['show-orders-services','handel-order-service'])
+                    <a class="btn btn-success" href="{{ route('order.index') }}">
+                        <i class="bi bi-people"></i> Manage orders</a>
+                        @endcanany
                
 
                 </div>
