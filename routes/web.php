@@ -6,11 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
-<<<<<<< HEAD
 use App\Http\Controllers\OrdersController;
-=======
 use App\Http\Controllers\CategoryController;
->>>>>>> d41b6b0c93b485c1650eac6af2484122fd1d6612
 
 /*
 |--------------------------------------------------------------------------
@@ -53,12 +50,8 @@ Route::delete('category/{category}', [CategoryController::class, 'destroy'])->na
 Route::resource('services', ServiceController::class);
 Route::get('search', [ServiceController::class, 'search'])->name('search');
 
-<<<<<<< HEAD
 Route::get('order', [OrdersController::class, 'index'])->name('order.index');
 Route::get('order/{order}', [OrdersController::class, 'handle'])->name('order.handle');
-
- 
-=======
 Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index');
 Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual');
->>>>>>> d41b6b0c93b485c1650eac6af2484122fd1d6612
+ 
