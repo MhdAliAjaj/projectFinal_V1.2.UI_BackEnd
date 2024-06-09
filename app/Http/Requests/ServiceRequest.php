@@ -23,12 +23,11 @@ class ServiceRequest extends FormRequest
     {
         return [
             
-            'title'=>'required|string|min:2|max:100',
+            'title'=>'required|string|min:2|max:500',
             'details'=>'required|string|min:2|max:500',
-            'price'=>'required|integer|min:2|max:500',
-            'category_id'=>'required|integer|exists:categories,id',
-            'user_id'=>'required|integer|exists:users,id',
-
+            'price'=>'required|integer|min:1|max:500',
+            'category_id'=>'integer|exists:categories,id',
+            'user_id'=>'integer|exists:users,id',
          ];
     }
 }

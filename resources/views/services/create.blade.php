@@ -8,8 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <from action="{{route ('services.store')}}"  method="POST">
+        <form action="{{route ('services.store')}}"  method="POST">
             @csrf
+            
             <div class="mb-3"><br>
                 <label class="form-label" id="">title</label>
                 <input type="text" class="form-control"  id="" name="title" placeholder="title">
@@ -23,12 +24,6 @@
                 <select class="form-select" aria-label="Default select example" id="" name="category_id">
                     @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-                </select>
-                <br>
-                <select class="form-select" aria-label="Default select example" id="" name="category_id">
-                    @foreach($users as $user)
-                    <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
                 </select>
                 <br>

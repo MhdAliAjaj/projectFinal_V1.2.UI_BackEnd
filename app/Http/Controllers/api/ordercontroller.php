@@ -8,7 +8,7 @@ use App\Models\User;
 
 class ordercontroller extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
@@ -47,4 +47,5 @@ class ordercontroller extends Controller
     {
         //
     }
+
 }
