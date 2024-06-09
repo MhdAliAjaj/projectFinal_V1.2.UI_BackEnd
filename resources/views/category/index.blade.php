@@ -42,7 +42,7 @@
                                 @endif
                             @endcan
                    
-                        </form>
+                        </form> 
                     </td>
                 </tr>
                 @empty

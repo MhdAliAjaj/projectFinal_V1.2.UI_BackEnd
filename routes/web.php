@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -49,5 +50,8 @@ Route::delete('category/{category}', [CategoryController::class, 'destroy'])->na
 Route::resource('services', ServiceController::class);
 Route::get('search', [ServiceController::class, 'search'])->name('search');
 
+Route::get('order', [OrdersController::class, 'index'])->name('order.index');
+Route::get('order/{order}', [OrdersController::class, 'handle'])->name('order.handle');
 Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index');
 Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual');
+ 
