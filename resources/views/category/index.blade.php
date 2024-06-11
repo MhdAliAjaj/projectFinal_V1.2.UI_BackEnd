@@ -13,8 +13,7 @@
             <thead>
                 <tr>
                     <th scope="col">S#</th>
-                    <th scope="col">Name</th>
-                   
+                    <th scope="col">Name</th>                
                     <th scope="col">User Name</th>
                     
                 </tr>
@@ -43,7 +42,7 @@
                                 @endif
                             @endcan
                    
-                        </form>
+                        </form> 
                     </td>
                 </tr>
                 @empty

@@ -9,16 +9,18 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use HasFactory, Notifiable,HasRoles,HasApiTokens ;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+    // protected $primaryKey = "user_id";
     protected $fillable = [
         'name',
         'email',
@@ -57,14 +59,27 @@ class User extends Authenticatable
     //     return $this->hasMany(Customer::class);
     // }
 
-    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
     //2.user & service   One To Mane
-    public function servicesR(): HasMany
+    public function services(): HasMany
     {
         return $this->hasMany(Service::class);
     }
     //3.user & category   One To Mane
-    public function categorysR(): HasMany
+    public function categories(): HasMany
     {
         return $this->hasMany(Category::class);
     }

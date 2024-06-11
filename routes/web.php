@@ -3,10 +3,16 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
+
 use App\Mail\MyTestMail;
 use App\Http\Controllers\MailController;
+
+
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\CategoryController;
 
 
 /*
@@ -49,8 +55,18 @@ Route::delete('category/{category}', [CategoryController::class, 'destroy'])->na
    
 Route::get('send-mail-form', [MailController::class, 'showMailForm'])->name('send-mail-form');
 
+Route::resource('services', ServiceController::class);
+Route::get('search', [ServiceController::class, 'search'])->name('search');
+
 
 Route::post('send-mail', [MailController::class, 'sendMail'])->middleware('customer')->name('send-mail');
    
                                               
+
+
+Route::get('order', [OrdersController::class, 'index'])->name('order.index');
+Route::get('order/{order}', [OrdersController::class, 'handle'])->name('order.handle');
+Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index');
+Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual');
+ 
 
