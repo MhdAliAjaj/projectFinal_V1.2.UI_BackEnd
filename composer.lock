@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8acbfe001abf608d7767d044ca260a1c",
+    "content-hash": "f30fd7382aa253f38bfad6d4ebde4763",
     "packages": [
         {
             "name": "brick/math",
@@ -6619,6 +6619,60 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2024-05-16T21:39:11+00:00"
+        },
+        {
+            "name": "mailosaur/mailosaur",
+            "version": "7.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mailosaur/mailosaur-php.git",
+                "reference": "da0dc8f76b9d455f9f08c8003b0c6867eaea14fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mailosaur/mailosaur-php/zipball/da0dc8f76b9d455f9f08c8003b0c6867eaea14fd",
+                "reference": "da0dc8f76b9d455f9f08c8003b0c6867eaea14fd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "nette/mail": "v3.1.0",
+                "nette/utils": "v3.0.1",
+                "phpunit/phpunit": "^8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mailosaur\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mailosaur",
+                    "email": "code@mailosaur.com"
+                }
+            ],
+            "description": "The Mailosaur PHP library lets you integrate email and SMS testing into your continuous integration process.",
+            "keywords": [
+                "automation",
+                "email",
+                "mailosaur",
+                "sms",
+                "testing"
+            ],
+            "support": {
+                "issues": "https://github.com/mailosaur/mailosaur-php/issues",
+                "source": "https://github.com/mailosaur/mailosaur-php/tree/7.11.0"
+            },
+            "time": "2023-09-15T14:32:57+00:00"
         },
         {
             "name": "mockery/mockery",
