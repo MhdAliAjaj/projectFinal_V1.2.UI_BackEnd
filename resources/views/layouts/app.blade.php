@@ -49,6 +49,15 @@
                                 </li>
                             @endif
                         @else
+
+                        @canany(['create-user', 'edit-user', 'delete-user'])
+                        <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
+                    @endcanany
+                    @canany(['create-category', 'edit-category', 'delete-category'])
+                        <li><a class="nav-link" href="{{ route('category.index') }}">Manage category</a></li>
+                    @endcanany
+
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

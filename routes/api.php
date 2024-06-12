@@ -1,9 +1,14 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\ServiceController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Api\CompanyInfoController;
+>>>>>>> e8c5f1935990507f1d204e619f21bd4422eddded
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +33,12 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8c5f1935990507f1d204e619f21bd4422eddded
 
 });
+// Route::post()
+Route::get('/service',[ServiceController::class,'index']);
+Route::get('/information',[CompanyInfoController::class,'info']);

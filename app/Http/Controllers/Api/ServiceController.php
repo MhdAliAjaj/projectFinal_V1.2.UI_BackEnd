@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+<<<<<<< HEAD
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ServiceResource;
 use App\Models\Service;
@@ -28,4 +29,19 @@ class ServiceController extends Controller
         return ServiceResource::collection($services);
     }
 
+=======
+use App\Models\Service;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ServiceResource;
+
+class ServiceController extends Controller
+{
+    public function index()
+    {
+        $service = ServiceResource::collection(Service::all());
+
+        return response()->json($service, 200);
+    }
+>>>>>>> e8c5f1935990507f1d204e619f21bd4422eddded
 }
