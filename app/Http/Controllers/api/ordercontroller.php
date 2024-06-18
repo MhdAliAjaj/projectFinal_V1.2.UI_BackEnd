@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\User;
 
-class CustomerController extends Controller
+class ordercontroller extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
     {
         //
     }
@@ -34,15 +27,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customer $customer)
+    public function show(string $id)
     {
         //
     }
@@ -50,7 +35,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,8 +43,9 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customer $customer)
+    public function destroy(string $id)
     {
         //
     }
+
 }

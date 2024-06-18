@@ -26,17 +26,17 @@ class Service extends Model
 
     //relations:
     //1.service & order   One To Many
-    public function ordersR(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
     //2.service & category   Many To One
-    public function categoryR(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
     //3.service & user   Many To One
-     public function userR(): BelongsTo
+     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
