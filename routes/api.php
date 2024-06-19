@@ -5,7 +5,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\ServiceController;
+<<<<<<< HEAD
+=======
 use App\Http\Controllers\Api\CompanyInfoController;
+>>>>>>> e8c5f1935990507f1d204e619f21bd4422eddded
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +24,19 @@ use App\Http\Controllers\Api\CompanyInfoController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/services', [ServiceController::class, 'index']);
+Route::get('/services/{service}', [ServiceController::class,'show']);
+
 Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
     Route::post('register', 'register');
     Route::post('logout', 'logout');
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> e8c5f1935990507f1d204e619f21bd4422eddded
 
 });
 // Route::post()

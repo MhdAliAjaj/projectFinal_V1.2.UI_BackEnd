@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceController;
+use App\Models\User;
 
 use App\Mail\MyTestMail;
 use App\Http\Controllers\MailController;
