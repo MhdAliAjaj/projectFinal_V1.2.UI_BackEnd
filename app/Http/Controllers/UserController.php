@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -48,17 +49,25 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserRequest $request): RedirectResponse
+    public function store(StoreUserRequest $request)
     {
-        $input = $request->all();
-        $input['password'] = Hash::make($request->password);
-
-        $user = User::create($input);
-        $user->assignRole($request->roles);
-
-        return redirect()->route('users.index')
-                ->withSuccess('New user is added successfully.');
+        try {
+            $input = $request->all();
+            // dd($input);
+            $input['password'] = Hash::make($request->password);
+    
+            $user = User::create($input);
+            $user->assignRole($request->roles);
+    
+            return redirect()->route('users.index')
+                             ->with('success', 'New user is added successfully.');
+        } catch (Exception $e) {
+            return redirect()->back()
+                             ->withInput()
+                             ->withErrors(['error' => 'There was an issue adding the user. Please try again.']);
+        }
     }
+    
 
     /**
      * Display the specified resource.
