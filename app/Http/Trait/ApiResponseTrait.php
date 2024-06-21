@@ -1,13 +1,15 @@
 <?php
-namespace App\https\Trait;
+namespace App\http\Trait;
 trait ApiResponseTrait
 {
     public function customApi($data,$message,$stutus){
 
         $array=[
-            'data'=>$data,
             'message'=>$message,
+            'data'=>$data,
+            'stutus'=>$stutus,
         ];
      return response()->json($array,$stutus);
     }
 }
+
