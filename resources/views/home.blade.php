@@ -24,7 +24,7 @@
                     @canany(['create-category', 'edit-category', 'delete-category'])
                         <a class="btn btn-success" href="{{ route('category.index') }}">
                         <i class="bi bi-people"></i> Manage category</a>
-                    @endcanany
+                        @endcanany
 
                     @canany(['create-service', 'edit-service', 'delete-service'])
                         <a class="btn btn-success" href="{{ route('services.index') }}">
@@ -34,7 +34,7 @@
                     <a class="btn btn-success" href="{{ route('reports.index') }}">Order Reports</a>
                     <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
                     @endif
-                    
+
                 </div>
             </div>
         </div>
