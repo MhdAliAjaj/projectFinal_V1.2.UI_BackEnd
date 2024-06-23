@@ -26,6 +26,15 @@
                         <i class="bi bi-people"></i> Manage category</a>
                         @endcanany
 
+                    @canany(['create-service', 'edit-service', 'delete-service'])
+                        <a class="btn btn-success" href="{{ route('services.index') }}">
+                        <i class="bi bi-people"></i> Manage Services</a>
+                    @endcanany
+                    @if(auth()->user()->hasRole('Admin'))
+                    <a class="btn btn-success" href="{{ route('reports.index') }}">Order Reports</a>
+                    <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
+                    @endif
+
 
                 </div>
             </div>
