@@ -19,16 +19,16 @@ class SuperAdminSeeder extends Seeder
     {
         // Creating  Admin User
         $admin= User::create([
-            'name' => 'Javed Ur Rehman', 
+            'name' => 'Javed Ur Rehman',
             'email' => 'javed@allphptricks.com',
             'password' => Hash::make('javed1234'),
             'roles_name'=>'Admin',
         ]);
         $admin->assignRole('Admin');
-    
+
         // Creating employee User
         $employee = User::create([
-            'name' => 'Syed Ahsan Kamal', 
+            'name' => 'Syed Ahsan Kamal',
             'email' => 'ahsan@allphptricks.com',
             'password' => Hash::make('ahsan1234'),
             'roles_name'=>'Employee',
@@ -37,14 +37,14 @@ class SuperAdminSeeder extends Seeder
 
         // Creating customer User
         $customer = User::create([
-            'name' => 'Abdul Muqeet', 
+            'name' => 'Abdul Muqeet',
             'email' => 'muqeet@allphptricks.com',
             'password' => Hash::make('muqeet1234'),
             'roles_name'=>'Customer',
 
         ]);
         $customer->assignRole('Customer');
-       
-       
+
+
     }
 }
