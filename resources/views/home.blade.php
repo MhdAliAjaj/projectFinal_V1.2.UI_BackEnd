@@ -35,7 +35,6 @@
                     <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
                     @endif
 
-
                 </div>
             </div>
         </div>
