@@ -49,5 +49,5 @@ Route::delete('category/{category}', [CategoryController::class, 'destroy'])->na
 Route::resource('services', ServiceController::class);
 Route::get('search', [ServiceController::class, 'search'])->name('search');
 
-Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index');
-Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual');
+Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index')->middleware('auth');
+Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual')->middleware('auth');
