@@ -27,10 +27,9 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                               
-                             
-                                    <span>{{$user->roles_name}}</span>
-                             
+                                @foreach($user->getRoleNames() as $role)
+                                    <span class="badge custom-badge-dark">{{ $role }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
