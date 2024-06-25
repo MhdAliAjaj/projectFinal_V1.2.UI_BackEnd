@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 // use App\Http\Trait\ApiResponseTrait;
 use App\http\Trait\ApiResponseTrait;
 use App\Http\Resources\CompanyInfoResource;
-use App\Http\Controllers\Api\CompanyInfoController;
+// use App\Http\Controllers\Api\CompanyInfoController;
 
 class CompanyInfoController extends Controller
 {

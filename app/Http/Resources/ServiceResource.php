@@ -15,7 +15,7 @@ class ServiceResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-// <<<<<<< HEAD
+
             'id' => $this->id,
             'title' => $this->title,
             'details' => $this->details,
@@ -26,7 +26,7 @@ class ServiceResource extends JsonResource
             'user' => new UserResource($this->whenLoaded('user')),
             // Additionaly when we make the APIs for users and Categories we can use the above code to get the data from the database
         ];
-// =======
+
         //     'name' => $this->user->name,
         //     'title' => $this->title,
         //     'details' => $this->details,
@@ -34,6 +34,5 @@ class ServiceResource extends JsonResource
 
         // ];
 
-// >>>>>>> e8c5f1935990507f1d204e619f21bd4422eddded
     }
 }
