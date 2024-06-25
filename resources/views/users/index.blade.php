@@ -54,7 +54,7 @@
 @endcan
 
                             @can('delete-user')
-                            @if (Auth::user()->id == $user->id|| $role ==null )
+                            @if (Auth::user()->id == $user->id|| $user->role ==null )
                             {{-- This is the current user, don't show the delete button --}}
                         @elseif ($role !== 'Admin' )
                             {{-- This user has admin role, show the delete button --}}
