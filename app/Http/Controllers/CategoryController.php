@@ -49,7 +49,7 @@ class CategoryController extends Controller
                     ]);
                     $categories=new Category();
                     $categories->name=$request->name;
-                    $categories->user_id= Auth::id(); ;
+                    $categories->user_id= Auth::id(); 
                     $categories->save();
                     return redirect()->route('category.index');
 
@@ -64,7 +64,7 @@ class CategoryController extends Controller
         //
     }
 
-    /**
+    /** 
      * Show the form for editing the specified resource.
      */
     public function edit(Category $category)

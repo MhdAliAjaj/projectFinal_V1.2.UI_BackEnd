@@ -16,7 +16,7 @@ return new class extends Migration
             // $table->foreignId('customer_id')->references('id')->on('customers');
             $table->foreignId('user_id')->references('id')->on('users'); //رقم الزبون
             $table->foreignId('service_id')->references('id')->on('services');
-            $table->text('describtion');//وصف ماذا يريد المستخدم من الخدمة
+            $table->text('description');//وصف ماذا يريد المستخدم من الخدمة
             $table->boolean('status');// default false => pendding  ,  true=>complete
             $table->timestamps();
         });

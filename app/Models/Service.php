@@ -36,8 +36,13 @@ class Service extends Model
         return $this->belongsTo(Category::class);
     }
     //3.service & user   Many To One
-     public function user(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function serviceRequests(): HasMany
+    {
+        return $this->hasMany(ServiceRequest::class);
     }
 }

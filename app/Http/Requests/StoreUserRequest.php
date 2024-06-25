@@ -22,11 +22,26 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:250',
-            'email' => 'required|string|email:rfc,dns|max:250|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-            // 'roles' => 'required' //
-            'roles_name' => 'required' //
+            'name' => ['required', 'string', 'max:250'],
+            'email' => ['required', 'string', 'email', 'max:250', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'roles' => ['required']
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'email.unique' => 'The email has already been taken.',
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least 8 characters.',
+            'password.confirmed' => 'The password confirmation does not match.',
+            'roles.required' => 'Please select at least one role.',
+            'roles.*.exists' => 'The selected role is invalid.',
+        ];
+    }
+
 }
