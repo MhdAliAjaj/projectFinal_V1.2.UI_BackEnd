@@ -49,6 +49,32 @@
                                         @endif
                                     @endcan
 
+
+                            @can('delete-user')
+                            @if (Auth::user()->id == $user->id|| $user->role ==null )
+                            {{-- This is the current user, don't show the delete button --}}
+                        @elseif ($role !== 'Admin' )
+                            {{-- This user has admin role, show the delete button --}}
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this user?');"><i class="bi bi-trash"></i> Delete</button>
+                        @else
+                            {{-- This user does not have admin role, don't show the delete button --}}
+                        @endif
+                            @endcan
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5">
+                        <span class="text-danger">
+                            <strong>No User Found!</strong>
+                        </span>
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+
                                     @can('delete-user')
                                         @if (Auth::user()->id != $user->id && $user->role !== 'admin')
                                             <button type="submit" class="btn btn-danger btn-sm"
@@ -70,6 +96,7 @@
                     @endforelse
                 </tbody>
             </table>
+
 
             {{ $users->links() }}
 

@@ -28,7 +28,6 @@
                         <th scope="col">Details</th>
                         <th scope="col">Price</th>
                         <th scope="col">Ctegory Name</th>
-                        <th scope="col">User Name</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -40,7 +39,6 @@
                             <td>{{$service->details}}</td>   
                             <td>{{$service->price}}</td>
                             <td>{{$service->category?->name}}</td>
-                            <td>{{$service->user?->name}}</td>                           
                             <td>
                                 
                                 <form style="display: inline;" method='POST' action="{{route('services.destroy' , $service->id)}}">
