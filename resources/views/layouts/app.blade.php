@@ -30,6 +30,7 @@ body {
     /* overflow-y: scroll; */
     margin: 0;
     /* color: black !important */
+    overflow-x: hidden;
 }
 
 a {
@@ -80,8 +81,8 @@ h4 {
     min-width: 0;
     overflow: hidden;
     transition: all 0.35s ease-in-out;
-    width: 100%;
-    background: var(--bs-dark-bg-subtle);
+    width: 80vw;
+        background: var(--bs-dark-bg-subtle);
 }
 
 /* Sidebar Elements Style */
