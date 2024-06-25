@@ -24,23 +24,26 @@
                     @canany(['create-category', 'edit-category', 'delete-category'])
                         <a class="btn btn-success" href="{{ route('category.index') }}">
                         <i class="bi bi-people"></i> Manage category</a>
-                    @endcanany
+                        @endcanany
 
                     @canany(['create-service', 'edit-service', 'delete-service'])
                         <a class="btn btn-success" href="{{ route('services.index') }}">
                         <i class="bi bi-people"></i> Manage Services</a>
-<<<<<<< HEAD
-                        @endcanany
-                        @canany(['show-orders-services','handel-order-service'])
-                    <a class="btn btn-success" href="{{ route('order.index') }}">
-                        <i class="bi bi-people"></i> Manage orders</a>
-                        @endcanany
-=======
                     @endcanany
->>>>>>> d41b6b0c93b485c1650eac6af2484122fd1d6612
-               
+                    @if(auth()->user()->hasRole('Admin'))
                     <a class="btn btn-success" href="{{ route('reports.index') }}">Order Reports</a>
                     <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
+                    @endif
+
+                       @canany(['create-service', 'edit-service', 'delete-service'])
+                        <a class="btn btn-success" href="{{ route('services.index') }}">
+                        <i class="bi bi-people"></i> Manage Services</a>
+                    @endcanany
+                    @if(auth()->user()->hasRole('Admin'))
+                    <a class="btn btn-success" href="{{ route('reports.index') }}">Order Reports</a>
+                    <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
+                    @endif
+
 
                 </div>
             </div>

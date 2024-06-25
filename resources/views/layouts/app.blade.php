@@ -44,7 +44,7 @@
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li class="nav-item">dddd
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
@@ -56,6 +56,11 @@
                     @canany(['create-category', 'edit-category', 'delete-category'])
                         <li><a class="nav-link" href="{{ route('category.index') }}">Manage category</a></li>
                     @endcanany
+                 
+
+
+
+
 
 
                             <li class="nav-item dropdown">

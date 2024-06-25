@@ -60,6 +60,10 @@ Route::resource('services', ServiceController::class);
 Route::get('search', [ServiceController::class, 'search'])->name('search');
 
 
+Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index')->middleware('auth');
+Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual')->middleware('auth');
+
+
 Route::post('send-mail', [MailController::class, 'sendMail'])->middleware('customer')->name('send-mail');
    
                                               
@@ -70,4 +74,5 @@ Route::get('order/{order}', [OrdersController::class, 'handle'])->name('order.ha
 Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index');
 Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual');
  
+
 
