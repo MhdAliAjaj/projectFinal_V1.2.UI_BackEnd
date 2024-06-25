@@ -10,6 +10,7 @@
                 <a href="{{ route('users.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New
                     User</a>
             @endcan
+            
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -27,10 +28,10 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                               
-                             
+
+
                                     <span>{{$user->roles_name}}</span>
-                             
+
                             </td>
                             <td>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">

@@ -18,7 +18,7 @@ class ServiceController extends Controller
         $this->middleware('permission:create-service', ['only' => ['create','store']]);
         $this->middleware('permission:edit-service', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-service', ['only' => ['destroy']]);
-       
+
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class ServiceController extends Controller
     public function index(Request $request)
     {
         $services = Service::with('category','user')->get();
-        
+
         return view('services.index' ,compact('services'));
     }
 
@@ -44,16 +44,27 @@ class ServiceController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ServiceRequest $request)
+
+    {
+    // Request->ServiceRequest استدعاء الفاليديشن من ملف
+    $request->validated();
+
     { 
     // Request->ServiceRequest استدعاء الفاليديشن من ملف 
     $request->validated(); 
+
 
     $services=new Service();
     $services->title=$request->title;
     $services->details=$request->details;
     $services->price=$request->price;
+
+    $services->category_id=  $request->category_id;
+    $services->user_id=Auth::id();
+
     $services->category_id=  $request->category_id; 
     $services->user_id=Auth::id(); 
+
     $services->save();
 
     return redirect()->route('services.index');
@@ -82,7 +93,11 @@ class ServiceController extends Controller
     public function update(ServiceRequest $request, int $id)
     {
         $request->validated();
+
+
+
         
+
         $services = Service::findOrFail($id);
         $services->title = $request->title;
         $services->details = $request->details;
@@ -102,7 +117,10 @@ class ServiceController extends Controller
         return redirect()->route('services.index');
     }
 
-    // يقوم بالبحث عن خدمة معينة search تابع ال  
+
+    // يقوم بالبحث عن خدمة معينة search تابع ال
+
+
     public function search(Request $request)
     {
         $request->validate([
