@@ -40,4 +40,9 @@ class Service extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function serviceRequests(): HasMany
+    {
+        return $this->hasMany(ServiceRequest::class);
+    }
 }
