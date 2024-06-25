@@ -84,7 +84,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Category::class);
     }
 
-
+    public function serviceRequests(): HasMany
+    {
+        return $this->hasMany(ServiceRequest::class);
+    }
 
     // relation spatie
     // public function roles()

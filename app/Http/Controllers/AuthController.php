@@ -89,14 +89,17 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required',
-        ]);
+        // $request->validate([
+        //     'email' => 'required|string|email',
+        //     'password' => 'required',
+        // ]);
         $credentials = $request->only('email', 'password');
 
         $token = Auth::guard('api')->attempt($credentials);
         return response($credentials);
+        
+
+
 
         // if (!$token) {
         //     return response()->json([
@@ -144,6 +147,8 @@ class AuthController extends Controller
                 'type' => 'bearer',
             ]
         ]);
+
+         
     }
 
     public function logout()

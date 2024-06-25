@@ -44,16 +44,27 @@ class ServiceController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ServiceRequest $request)
+
     {
     // Request->ServiceRequest استدعاء الفاليديشن من ملف
     $request->validated();
+
+    { 
+    // Request->ServiceRequest استدعاء الفاليديشن من ملف 
+    $request->validated(); 
+
 
     $services=new Service();
     $services->title=$request->title;
     $services->details=$request->details;
     $services->price=$request->price;
+
     $services->category_id=  $request->category_id;
     $services->user_id=Auth::id();
+
+    $services->category_id=  $request->category_id; 
+    $services->user_id=Auth::id(); 
+
     $services->save();
 
     return redirect()->route('services.index');
@@ -83,6 +94,10 @@ class ServiceController extends Controller
     {
         $request->validated();
 
+
+
+        
+
         $services = Service::findOrFail($id);
         $services->title = $request->title;
         $services->details = $request->details;
@@ -102,7 +117,10 @@ class ServiceController extends Controller
         return redirect()->route('services.index');
     }
 
+
     // يقوم بالبحث عن خدمة معينة search تابع ال
+
+
     public function search(Request $request)
     {
         $request->validate([

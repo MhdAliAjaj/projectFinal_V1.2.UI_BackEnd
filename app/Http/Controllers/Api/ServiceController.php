@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-// <<<<<<< HEAD
+
+
+
+
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,6 +33,8 @@ class ServiceController extends Controller
         $services = Service::with(['category', 'user'])->get();
         return $this->customApi( ServiceResource::collection($services),'successfully',200);
     }
+}
+
 
 // =======
 // use App\Models\Service;
@@ -45,6 +50,7 @@ class ServiceController extends Controller
 
 //         return response()->json($service, 200);
 //     }
-// >>>>>>> e8c5f1935990507f1d204e619f21bd4422eddded
+
 // }
-}
+// }
+
