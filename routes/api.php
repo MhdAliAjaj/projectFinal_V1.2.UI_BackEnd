@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\CompanyInfoController;
-
+use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,3 +32,9 @@ Route::controller(AuthController::class)->group(function () {
 // Route::post()
 Route::get('/service',[ServiceController::class,'index']);
 Route::get('/information',[CompanyInfoController::class,'info']);
+
+
+// routes/api.php
+
+
+Route::post('send-mail', [MailController::class, 'sendMailAPI'])->name('send.mail.api');

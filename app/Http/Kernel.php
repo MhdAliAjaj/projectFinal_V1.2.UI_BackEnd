@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Http\Middleware\EmployeeMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -24,6 +25,7 @@ class Kernel extends HttpKernel
     ];
     protected $routeMiddleware = [
         'customer' => \App\Http\Middleware\EnsureCustomer::class,
+       
     ];
 
     /**
@@ -72,5 +74,6 @@ class Kernel extends HttpKernel
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+        
     ];
 }

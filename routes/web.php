@@ -53,15 +53,14 @@ Route::get('category/{category}/edit', [CategoryController::class, 'edit'])->nam
 Route::put('category/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
    
-Route::get('send-mail-form', [MailController::class, 'showMailForm'])->name('send-mail-form');
+//Route::get('send-mail-form', [MailController::class, 'showMailForm'])->name('send-mail-form');
 
 Route::resource('services', ServiceController::class);
 Route::get('search', [ServiceController::class, 'search'])->name('search');
 
 
-Route::post('send-mail', [MailController::class, 'sendMail'])->middleware('customer')->name('send-mail');
-   
-                                              
+Route::get('send-mail', [MailController::class, 'showMailForm']);
+Route::post('store-mail-data', [MailController::class, 'storeMailData'])->name('store.mail.data');
 
 
 Route::get('order', [OrdersController::class, 'index'])->name('order.index');
