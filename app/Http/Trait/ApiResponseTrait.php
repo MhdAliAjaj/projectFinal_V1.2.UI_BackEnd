@@ -9,7 +9,7 @@ trait ApiResponseTrait
             'data'=>$data,
             'stutus'=>$stutus,
         ];
-     return response()->json($array,$stutus);
+    return response()->json($array,$stutus);
     }
 }
 

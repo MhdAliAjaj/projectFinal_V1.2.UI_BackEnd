@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceRequest;
+use App\Mail\ServiceConfirmation;
 use App\Mail\ServiceRequestConfirmation;
 use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
@@ -28,8 +29,9 @@ class ServiceRequestController extends Controller
         ]);
 
 
-        $user = $order->user;
-        Mail::to($user->email)->send(new ServiceRequestConfirmation($order));
+
+        Mail::to($order->user)->send(new ServiceConfirmation($order));
+
 
         return response()->json(['message' => 'Service request submitted successfully']);
     }

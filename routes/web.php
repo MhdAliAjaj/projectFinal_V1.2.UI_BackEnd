@@ -53,7 +53,7 @@ Route::get('category/{category}', [CategoryController::class, 'show'])->name('ca
 Route::get('category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
 Route::put('category/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
-   
+
 Route::get('send-mail-form', [MailController::class, 'showMailForm'])->name('send-mail-form');
 
 Route::resource('services', ServiceController::class);
@@ -65,14 +65,14 @@ Route::get('annualReport', [ReportController::class, 'annualReport'])->name('rep
 
 
 Route::post('send-mail', [MailController::class, 'sendMail'])->middleware('customer')->name('send-mail');
-   
-                                              
+
+
 
 
 Route::get('order', [OrdersController::class, 'index'])->name('order.index');
 Route::get('order/{order}', [OrdersController::class, 'handle'])->name('order.handle');
 Route::get('orderReport', [ReportController::class, 'index'])->name('reports.index');
 Route::get('annualReport', [ReportController::class, 'annualReport'])->name('reports.annual');
- 
+
 
 

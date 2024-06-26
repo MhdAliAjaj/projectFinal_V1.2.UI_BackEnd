@@ -8,7 +8,6 @@ use App\Http\Controllers\Api\ServiceController;
 
 use App\Http\Controllers\Api\CompanyInfoController;
 
-use App\Http\Controllers\Api\CompanyInfoController;
 use App\Http\Controllers\Api\ServiceRequestController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -26,12 +25,6 @@ Route::controller(AuthController::class)->group(function () {
 });
 Route::post('/service-requests', [ServiceRequestController::class,'create']);
 
-    Route::post('login', 'login');
-    Route::post('register', 'register');
-    Route::post('logout', 'logout');
-
-});
 // Route::post()
 // Route::get('/service',[ServiceController::class,'index']);
 Route::get('/information',[CompanyInfoController::class,'info']);
-
