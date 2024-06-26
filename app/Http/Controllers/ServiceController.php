@@ -49,9 +49,9 @@ class ServiceController extends Controller
     // Request->ServiceRequest استدعاء الفاليديشن من ملف
     $request->validated();
 
-    { 
-    // Request->ServiceRequest استدعاء الفاليديشن من ملف 
-    $request->validated(); 
+    {
+    // Request->ServiceRequest استدعاء الفاليديشن من ملف
+    $request->validated();
 
 
     $services=new Service();
@@ -62,8 +62,8 @@ class ServiceController extends Controller
     $services->category_id=  $request->category_id;
     $services->user_id=Auth::id();
 
-    $services->category_id=  $request->category_id; 
-    $services->user_id=Auth::id(); 
+    $services->category_id=  $request->category_id;
+    $services->user_id=Auth::id();
 
     $services->save();
 
@@ -96,7 +96,7 @@ class ServiceController extends Controller
 
 
 
-        
+
 
         $services = Service::findOrFail($id);
         $services->title = $request->title;

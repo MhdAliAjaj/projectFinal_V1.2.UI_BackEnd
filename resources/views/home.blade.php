@@ -68,8 +68,11 @@
                         </nav>
                         <main class="content px-3 py-2">
                             <div class="container-fluid">
+
                                 <div class="mb-3">
+                                    @if(auth()->user()->hasRole('Admin'))
                                     <h4>Admin Dashboard</h4>
+                                    @endif
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-6 d-flex">
@@ -78,8 +81,8 @@
                                                 <div class="row g-0 w-100">
                                                     <div class="col-6">
                                                         <div class="p-3 m-1">
-                                                            <h4>Welcome Back, Admin</h4>
-                                                            <p class="mb-0">Admin Dashboard, focal x</p>
+                                                            <h4>Welcome Back, {{ Auth::user()->name }}</h4>
+                                                            <p class="mb-0"> {{ Auth::user()->roles_name }} in focal x</p>
                                                         </div>
                                                     </div>
 
@@ -95,23 +98,11 @@
 
                     </div>
 
-                    @canany(['create-service', 'edit-service', 'delete-service'])
+                    {{-- @canany(['create-service', 'edit-service', 'delete-service'])
                         <a class="btn btn-success" href="{{ route('services.index') }}">
                         <i class="bi bi-people"></i> Manage Services</a>
-                    @endcanany
-                    @if(auth()->user()->hasRole('Admin'))
-                    <a class="btn btn-success" href="{{ route('reports.index') }}">Order Reports</a>
-                    <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
-                    @endif
+                    @endcanany --}}
 
-                       @canany(['create-service', 'edit-service', 'delete-service'])
-                        <a class="btn btn-success" href="{{ route('services.index') }}">
-                        <i class="bi bi-people"></i> Manage Services</a>
-                    @endcanany
-                    @if(auth()->user()->hasRole('Admin'))
-                    <a class="btn btn-success" href="{{ route('reports.index') }}">Order Reports</a>
-                    <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
-                    @endif
 
 
 

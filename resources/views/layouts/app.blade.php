@@ -267,12 +267,12 @@ a.sidebar-link {
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">
-                        Ali Saleh
+                        {{ Auth::user()->roles_name }}
                     </li>
                     <li class="sidebar-item">
                         <a href="/home" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
-                            Dashboard
+                            {{ Auth::user()->name }}
                         </a>
                     </li>
                     <li class="sidebar-item">
