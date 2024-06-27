@@ -1,7 +1,11 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 use App\Models\ContactForm;
+
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactFormRequest;
+use App\Http\Controllers\Controller;
+
 class ContactFormController extends Controller
 {
     /**
@@ -23,9 +27,12 @@ class ContactFormController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactFormRequest $request)
     {
-        
+        $email = $request->validated();
+        $email['user_id'] = auth()->id();
+        Emeil::create($email);
+        return $this->customApi(ContactFormResource::collection($email),'successfully',200);
     }
 
     /**

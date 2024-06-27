@@ -267,12 +267,12 @@ a.sidebar-link {
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">
-                        Ali Saleh
+                        {{ Auth::user()->roles_name }}
                     </li>
                     <li class="sidebar-item">
                         <a href="/home" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
-                            Dashboard
+                            {{ Auth::user()->name }}
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -293,11 +293,29 @@ a.sidebar-link {
                         @endcanany
 
                     </li>
-
                     <li class="sidebar-item">
-                       @canany(['show-orders-services','handel-order-service'])
+                        @canany(['show-report-order'])
+                        <li><a class="sidebar-link collapsed" href="{{ route('reports.index') }}">report</a></li>
+                        @endcanany
+
+                    </li>
+
+                    {{-- <li class="sidebar-item"> --}}
+                       {{-- @canany(['show-orders-services','handel-order-service'])
 <li><a class="sidebar-link collapsed" href="{{ route('order.index') }}">Manage orders</a></li>
-@endcanany
+@endcanany --}}
+@if(auth()->user()->hasRole('Customer'))
+{{-- <li><a class="sidebar-link collapsed" href="{{ route('services.show') }}">show all service</a></li> --}}
+{{-- <li><a class="sidebar-link collapsed" href="{{ route('services.index') }}">show service</a></li> --}}
+{{-- <li><a class="sidebar-link collapsed" href="{{ route('order.create') }}">order service</a></li> --}}
+{{-- <li><a class="sidebar-link collapsed" href="{{ route('services.index') }}">contact form</a></li> --}}
+
+@endif
+@if(auth()->user()->hasRole('Employee'))
+{{-- <li><a class="sidebar-link collapsed" href="{{ route('order.index') }}">show  order</a></li> --}}
+{{-- <li><a class="sidebar-link collapsed" href="{{ route('order.handle') }}">order handle</a></li> --}}
+
+@endif
                             </li>
                         </ul>
                     </li>
