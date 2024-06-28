@@ -60,6 +60,9 @@
 <body>
     <br><br><br>
     <div class="container">
+        <div class="float-end">
+            <a href="{{ route('services.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+        </div>
         <div class="header">
             <h1>Service Details</h1>
         </div>
