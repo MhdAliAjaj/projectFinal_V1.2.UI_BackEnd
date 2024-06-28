@@ -1,5 +1,3 @@
-sujoud Dabbaghia, [6/27/2024 11:40 PM]
-هي تعديل ع ملف ReportController نسخو كلو احسن:
 <?php
 namespace App\Http\Controllers;
 
@@ -87,7 +85,7 @@ class ReportController extends Controller
                 ->orderBy('month', 'asc')
                 ->get();
 
-sujoud Dabbaghia, [6/27/2024 11:40 PM]
+
 // عدد الطلبات اليومي
             $dailyOrders = Order::selectRaw('DATE(date) as date, COUNT(*) as count')
                 ->groupBy('date')
