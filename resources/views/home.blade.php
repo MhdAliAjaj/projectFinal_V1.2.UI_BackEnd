@@ -42,9 +42,9 @@
                             </li>
 
                             <li class="sidebar-item">
-                               @canany(['show-orders-services','handel-order-service'])
-        <li><a class="sidebar-link collapsed" href="{{ route('order.index') }}">Manage orders</a></li>
-        @endcanany
+                                @canany(['show-orders-services','handel-order-service'])
+                                <li><a class="sidebar-link collapsed" href="{{ route('order.index') }}">Manage orders</a></li>
+                                @endcanany
                                     </li>
                                 </ul>
                             </li>
@@ -98,10 +98,10 @@
 
                     </div>
 
-                    {{-- @canany(['create-service', 'edit-service', 'delete-service'])
+                    <!-- {{-- @canany(['create-service', 'edit-service', 'delete-service'])
                         <a class="btn btn-success" href="{{ route('services.index') }}">
                         <i class="bi bi-people"></i> Manage Services</a>
-                    @endcanany --}}
+                    @endcanany --}} -->
 
 
 
@@ -135,3 +135,4 @@
 </div>
 
 @endsection
+
