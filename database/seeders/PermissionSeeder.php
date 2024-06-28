@@ -35,6 +35,7 @@ class PermissionSeeder extends Seeder
         $employee = [
             'show-orders-services',
             'handel-order-service',
+            'send-message'
         ];
         $customer = [
             'show-services',

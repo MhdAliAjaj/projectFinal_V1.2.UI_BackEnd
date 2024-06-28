@@ -300,10 +300,21 @@ a.sidebar-link {
 
                     </li>
 
-                    {{-- <li class="sidebar-item"> --}}
+                    @if(auth()->user()->hasRole('Employee'))
+                    <li class="sidebar-item">
+                    <li><a class="sidebar-link collapsed" href="{{ route('order.index') }}">Manage orders</a></li>
+                    </li>
+                    @endif
+                    @if(auth()->user()->hasRole('Employee'))
+                    <li class="sidebar-item">
+                    <li><a class="sidebar-link collapsed" href="{{ route('contact.index') }}">Contact</a></li>
+                    </li>
+                    @endif
+
+                    <!-- {{-- <li class="sidebar-item"> --}}
                        {{-- @canany(['show-orders-services','handel-order-service'])
 <li><a class="sidebar-link collapsed" href="{{ route('order.index') }}">Manage orders</a></li>
-@endcanany --}}
+@endcanany --}} -->
 @if(auth()->user()->hasRole('Customer'))
 {{-- <li><a class="sidebar-link collapsed" href="{{ route('services.show') }}">show all service</a></li> --}}
 {{-- <li><a class="sidebar-link collapsed" href="{{ route('services.index') }}">show service</a></li> --}}

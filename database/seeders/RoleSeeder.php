@@ -23,6 +23,7 @@ class RoleSeeder extends Seeder
         $employee->givePermissionTo([
             'show-orders-services',
             'handel-order-service',
+            'send-message'
         ]);
 
         $customer->givePermissionTo([
