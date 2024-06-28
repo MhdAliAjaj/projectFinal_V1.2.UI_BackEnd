@@ -13,8 +13,8 @@ class OrdersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:show-orders-services', ['only' => ['index','show']]);
-        $this->middleware('permission:handel-order-service', ['only' => ['update','handle']]);
+        $this->middleware('permission:show-orders-services', ['only' => ['index','show']]);   //للحذف
+        $this->middleware('permission:handel-order-service', ['only' => ['update','handle']]); //للحذف
     }
     public function index()
     {

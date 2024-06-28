@@ -1,3 +1,5 @@
+sujoud Dabbaghia, [6/27/2024 11:40 PM]
+هي تعديل ع ملف ReportController نسخو كلو احسن:
 <?php
 namespace App\Http\Controllers;
 
@@ -9,12 +11,12 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
-{
+{  
+    /* تابع تقرير الطلبات */
     public function index()
     {
             $orders = Order::with('service','user')->get();
             
-            // احصائيات
             $totalOrders = $orders->count();
 
             // عدد الطلبات لكل خدمة
@@ -35,7 +37,7 @@ class ReportController extends Controller
             // أحدث الطلبات
             $latestOrder = $orders->sortByDesc('date')->first();
 
-            // الطلبات في آخر 30 يومًا
+            // الطلبات في آخر 30 يوماً
             $ordersLast30Days = Order::with('service')
             ->where('date', '>=', Carbon::now()->subDays(30))
             ->get();
@@ -46,6 +48,7 @@ class ReportController extends Controller
             
             // تجميع الطلبات حسب الخدمة
              $ordersGroupedByService = $orders->groupBy('service.title');  
+
             // إنشاء مصفوفة لحساب عدد الطلبات لكل خدمة و ترتيبها
             $serviceOrderCounts = $ordersGroupedByService->map(function ($orders, $serviceTitle) {
                 return [
@@ -54,15 +57,15 @@ class ReportController extends Controller
                  ];
                 })->sortByDesc('count'); // ترتيب الخدمات بناءً على عدد الطلبات من الأكثر للأقل
 
-            // أكثر الخدمات طلبًا
-            // جلب الخدمات مع عدد الطلبات المرتبطة بها، وترتيبها حسب الأكثر طلبًا
+            // أكثر الخدمات طلباً
+            // جلب الخدمات مع عدد الطلبات المرتبطة بها و ترتيبها حسب الأكثر طلباً
             $servicesWithOrderCount = Service::withCount('orders')
             ->orderBy('orders_count', 'desc')
             ->get();
             $mostRequestedService = $servicesWithOrderCount->first();
             $mostRequestedServiceCount = $mostRequestedService ? $mostRequestedService->orders_count : 0;
       
-            // العملاء الأكثر نشاطًا
+            // العملاء الأكثر نشاطاً
             // استعلام لجلب عدد الطلبات لكل عميل وترتيبهم
             $customerWithMostOrders = User::select('users.name', DB::raw('COUNT(orders.id) as orders_count'))
             ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
@@ -84,17 +87,19 @@ class ReportController extends Controller
                 ->orderBy('month', 'asc')
                 ->get();
 
-            // عدد الطلبات اليومي
+sujoud Dabbaghia, [6/27/2024 11:40 PM]
+// عدد الطلبات اليومي
             $dailyOrders = Order::selectRaw('DATE(date) as date, COUNT(*) as count')
                 ->groupBy('date')
                 ->orderBy('date')
                 ->get();
-
+        
             return view('reports.index', compact(
                 'orders',
                 'totalOrders',
                 'servicesCount',
                 'serviceOrderCounts',
+                'servicesWithOrderCount',
                 'uniqueCustomers',
                 'totalRevenue',
                 'latestOrder',
@@ -107,13 +112,14 @@ class ReportController extends Controller
                 'averageOrderPrice',
                 'monthlyRevenue',
                 'dailyOrders',
-                'servicesWithOrderCount',
+                
             ));
     }
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+   /*تابع تقرير عن الأداء العام للشركة*/ 
     public function annualReport()
     {
-        // الاحصائيات
         $orders = Order::with('service')->get();
         
         // السنة الحالية
@@ -131,7 +137,7 @@ class ReportController extends Controller
         // الطلبات الملغاة
         $canceledOrders = Order::whereYear('date', $currentYear)->where('status', '0') ->count();
        
-        // أكثر الخدمات طلبًا
+        // أكثر الخدمات طلباً
         $mostRequestedServices = Order::select('service_id', \DB::raw('count(*) as total'))
             ->whereYear('date', $currentYear)
             ->groupBy('service_id')
@@ -141,15 +147,6 @@ class ReportController extends Controller
             }])      
             ->take(5)
             ->get();
-
-        // أقل الخدمات طلبًا
-        $leastRequestedServices = Order::select('service_id', \DB::raw('count(*) as total'))
-        ->whereYear('date', $currentYear)
-        ->groupBy('service_id')
-        ->orderBy('total', 'asc')
-        ->with('service')
-        ->take(5)
-        ->get();
 
         // إجمالي الإيرادات السنوية
         $totalRevenue = Order::join('services', 'orders.service_id', '=', 'services.id')
@@ -171,9 +168,7 @@ class ReportController extends Controller
         ->groupBy('week')
         ->orderBy('week')
         ->get();
-
        
-        // عرض الاداء العام للشركة
         return view('reports.annual', compact(    
             'currentYear',      
             'totalRevenue',
@@ -182,7 +177,6 @@ class ReportController extends Controller
             'completedOrders',
             'canceledOrders',
             'mostRequestedServices',
-            'leastRequestedServices',
             'monthlyRevenue',
             'weeklyRevenue',
         ));

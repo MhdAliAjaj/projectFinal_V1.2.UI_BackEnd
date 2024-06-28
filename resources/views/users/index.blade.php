@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -10,7 +9,6 @@
                 <a href="{{ route('users.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New
                     User</a>
             @endcan
-            
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -28,10 +26,9 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-
-
-                                    <span>{{$user->roles_name}}</span>
-
+                                @foreach($user->getRoleNames() as $role)
+                                    <span class="badge custom-badge-dark">{{ $role }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
@@ -48,32 +45,6 @@
                                             </a>
                                         @endif
                                     @endcan
-
-
-                            @can('delete-user')
-                            @if (Auth::user()->id == $user->id|| $user->role ==null )
-                            {{-- This is the current user, don't show the delete button --}}
-                        @elseif ($role !== 'Admin' )
-                            {{-- This user has admin role, show the delete button --}}
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this user?');"><i class="bi bi-trash"></i> Delete</button>
-                        @else
-                            {{-- This user does not have admin role, don't show the delete button --}}
-                        @endif
-                            @endcan
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5">
-                        <span class="text-danger">
-                            <strong>No User Found!</strong>
-                        </span>
-                    </td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
 
                                     @can('delete-user')
                                         @if (Auth::user()->id != $user->id && $user->role !== 'admin')
@@ -96,7 +67,6 @@
                     @endforelse
                 </tbody>
             </table>
-
 
             {{ $users->links() }}
 

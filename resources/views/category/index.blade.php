@@ -12,7 +12,7 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">S#</th>
+                    <th scope="col">S</th>
                     <th scope="col">Name</th>                
                     <th scope="col">User Name</th>
                     
@@ -37,7 +37,8 @@
                             @endcan
                            
                             @can('delete-category')
-                                @if (Auth::user()->id != $categor->id)
+                                {{-- @if (Auth::user()->id != $categor->id) --}}
+                                @if (Auth::user()->id )
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this user?');"><i class="bi bi-trash"></i> Delete</button>
                                 @endif
                             @endcan

@@ -81,19 +81,6 @@
                 </ul>
             </div>
         </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h4>Least Requested Services</h4>
-            </div>
-            <div class="card-body">
-                <ul>
-                    @foreach ($leastRequestedServices as $service)
-                        <li>{{ $service->service->title }}: {{ $service->total }} orders</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
         
         <div class="card">
             <div class="card-header">
