@@ -50,13 +50,11 @@
             background-color: #adb5bd; /* لون فضي فاتح */
             color: #fff; /* لون الأرقام أبيض */
         }
-        
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Order Reports</h1>
-
         <div class="card">
             <div class="card-header">
                 <h3>Statistics</h3>

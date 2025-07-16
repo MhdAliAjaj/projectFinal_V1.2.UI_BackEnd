@@ -60,9 +60,12 @@
 <body>
     <br><br><br>
     <div class="container">
+<<<<<<< HEAD
         <div class="float-end">
             <a href="{{ route('services.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
         </div>
+=======
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
         <div class="header">
             <h1>Service Details</h1>
         </div>

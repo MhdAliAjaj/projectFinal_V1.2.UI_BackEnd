@@ -8,7 +8,11 @@ use App\Http\Controllers\Controller;
 // use App\Http\Trait\ApiResponseTrait;
 use App\http\Trait\ApiResponseTrait;
 use App\Http\Resources\CompanyInfoResource;
+<<<<<<< HEAD
 // use App\Http\Controllers\Api\CompanyInfoController;
+=======
+use App\Http\Controllers\Api\CompanyInfoController;
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
 
 class CompanyInfoController extends Controller
 {

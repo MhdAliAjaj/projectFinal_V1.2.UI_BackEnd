@@ -183,6 +183,10 @@ return [
         'models'          => true,  // Display models
         'livewire'        => true,  // Display Livewire (when available)
         'jobs'            => false, // Display dispatched jobs
+<<<<<<< HEAD
+=======
+        'messagesServices' => true, // MessagesServices
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
     ],
 
     /*

@@ -39,7 +39,14 @@
                                 <li><a class="sidebar-link collapsed" href="{{ route('services.index') }}">Manage service</a></li>
                                 @endcanany
 
+<<<<<<< HEAD
                             </li>
+=======
+                    @canany(['create-category', 'edit-category', 'delete-category'])
+                        <a class="btn btn-success" href="{{ route('category.index') }}">
+                        <i class="bi bi-people"></i> Manage category</a>
+                        @endcanany
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
 
                             <li class="sidebar-item">
                                 @canany(['show-orders-services','handel-order-service'])
@@ -101,10 +108,18 @@
                     <!-- {{-- @canany(['create-service', 'edit-service', 'delete-service'])
                         <a class="btn btn-success" href="{{ route('services.index') }}">
                         <i class="bi bi-people"></i> Manage Services</a>
+<<<<<<< HEAD
                     @endcanany --}} -->
 
 
 
+=======
+                    @endcanany
+                    @if(auth()->user()->hasRole('Admin'))
+                    <a class="btn btn-success" href="{{ route('reports.index') }}">Order Reports</a>
+                    <a class="btn btn-success" href="{{ route('reports.annual') }}">Overall Performance</a>
+                    @endif
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
 
                 </div>
             </div>
@@ -131,8 +146,12 @@
 
     </div>
 </div>
+<<<<<<< HEAD
 
 </div>
 
 @endsection
 
+=======
+@endsection
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)

@@ -28,6 +28,7 @@
                             <td>
                                 @foreach($user->getRoleNames() as $role)
                                     <span class="badge custom-badge-dark">{{ $role }}</span>
+                                    <span class="badge bg-success">{{ $role }}</span>
                                 @endforeach
                             </td>
                             <td>

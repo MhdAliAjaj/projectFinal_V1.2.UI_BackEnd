@@ -14,9 +14,9 @@ class ServiceController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:create-service|edit-category|delete-category', ['only' => ['index','show']]);
-        $this->middleware('permission:create-service', ['only' => ['create','store']]);
-        $this->middleware('permission:edit-service', ['only' => ['edit','update']]);
+        $this->middleware('permission:create-service|edit-category|delete-category', ['only' => ['index', 'show']]);
+        $this->middleware('permission:create-service', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-service', ['only' => ['edit', 'update']]);
         $this->middleware('permission:delete-service', ['only' => ['destroy']]);
 
     }
@@ -25,9 +25,15 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
         $services = Service::with('category','user')->get();
 
         return view('services.index' ,compact('services'));
+=======
+        $services = Service::with('category', 'user')->get();
+
+        return view('services.index', compact('services'));
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
     }
 
     /**
@@ -37,13 +43,14 @@ class ServiceController extends Controller
     {
         $categories = Category::all();
         $users = User::all();
-        return view('services.create' ,compact('categories','users'));
+        return view('services.create', compact('categories', 'users'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(ServiceRequest $request)
+<<<<<<< HEAD
 
     {
  
@@ -51,16 +58,28 @@ class ServiceController extends Controller
     $request->validated(); 
 
 
+=======
+    {
+        
+    // Request->ServiceRequest استدعاء الفاليديشن من ملف
+    $request->validated();
+     
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
     $services=new Service();
     $services->title=$request->title;
     $services->details=$request->details;
     $services->price=$request->price;
+<<<<<<< HEAD
 
     $services->category_id=  $request->category_id;
     $services->user_id=Auth::id();
 
 
 
+=======
+    $services->category_id=  $request->category_id;
+    $services->user_id=Auth::id();
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
     $services->save();
 
     return redirect()->route('services.index');
@@ -70,7 +89,7 @@ class ServiceController extends Controller
     {
         $categories = Category::all();
         $users = User::all();
-        return view('services.show' ,compact('service','categories','users'));
+        return view('services.show', compact('service', 'categories', 'users'));
     }
 
     /**
@@ -80,7 +99,7 @@ class ServiceController extends Controller
     {
         $categories = Category::all();
         $users = User::all();
-        return view('services.edit' ,compact('service','categories','users'));
+        return view('services.edit', compact('service', 'categories', 'users'));
     }
 
     /**
@@ -90,16 +109,19 @@ class ServiceController extends Controller
     {
         $request->validated();
 
+<<<<<<< HEAD
 
 
         
 
+=======
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
         $services = Service::findOrFail($id);
         $services->title = $request->title;
         $services->details = $request->details;
         $services->price = $request->price;
-        $services->category_id =  $request->category_id;
-        $services->user_id =  Auth::id();
+        $services->category_id = $request->category_id;
+        $services->user_id = Auth::id();
         $services->save();
         return redirect()->route('services.index');
     }
@@ -113,15 +135,20 @@ class ServiceController extends Controller
         return redirect()->route('services.index');
     }
 
+<<<<<<< HEAD
 
     // يقوم بالبحث عن خدمة معينة search تابع ال
 
 
+=======
+    // يقوم بالبحث عن خدمة معينة search تابع ال
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
     public function search(Request $request)
     {
         $request->validate([
          'search' => ['string'],
         ]);
+
         $services = Service::where('title' , 'LIKE','%'.$request->search.'%')->get();
         return view('services.index',compact('services'));
     }

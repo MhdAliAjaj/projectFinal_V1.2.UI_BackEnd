@@ -89,18 +89,29 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
+<<<<<<< HEAD
         // $request->validate([
         //     'email' => 'required|string|email',
         //     'password' => 'required',
         // ]);
+=======
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required',
+        ]);
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
         $credentials = $request->only('email', 'password');
 
         $token = Auth::guard('api')->attempt($credentials);
         return response($credentials);
+<<<<<<< HEAD
         
 
 
 
+=======
+
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
         // if (!$token) {
         //     return response()->json([
         //         'status' => 'error',

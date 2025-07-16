@@ -51,13 +51,23 @@
         .header h1 {
             color: #17a2b8;
         }
+<<<<<<< HEAD
+=======
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
     </style>
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
         <div class="float-end">
             <a href="{{ route('services.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
         </div>
+=======
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
       <div class="header">
         <h1>Update Service</h1>
       </div>
@@ -67,14 +77,32 @@
             <div class="form-group">
                 <label class="form-label" id="">Title</label>
                 <input type="text" class="form-control" id="" name="title" placeholder="title" value="{{ $service->title}}">
+<<<<<<< HEAD
+=======
+                @error('title')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
             </div>
             <div class="form-group">
                 <label class="form-label" id="">Details</label>
                 <input type="text" class="form-control" id="" name="details" placeholder="details" value="{{ $service->details}}">
+<<<<<<< HEAD
+=======
+                @error('details')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
             </div>
             <div class="form-group">
                 <label class="form-label" id="">Price</label>
                 <input type="text" class="form-control" id="" name="price" placeholder="price" value="{{ $service->price}}">
+<<<<<<< HEAD
+=======
+                @error('price')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
             </div>
             <div class="form-group">
                 <label class="form-label" for="category_id">Category Name</label>

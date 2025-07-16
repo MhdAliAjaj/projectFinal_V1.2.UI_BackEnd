@@ -81,7 +81,11 @@
             @csrf
             <div class="form-group">
                 <label for="email">Email:</label>
+<<<<<<< HEAD
                 <input type="email" id="email" name="email" value="{{$user->email}}" required>
+=======
+                <input type="email" id="email" name="email" required>
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
             </div>
             <div class="form-group">
                 <label for="message">Message:</label>

@@ -51,13 +51,23 @@
         .header h1 {
             color: #17a2b8;
         }
+<<<<<<< HEAD
+=======
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
     </style>
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
         <div class="float-end">
             <a href="{{ route('services.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
         </div>
+=======
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
         <div class="header">
             <h1>Add New Service</h1>
         </div>
@@ -65,6 +75,7 @@
             @csrf
             <div class="form-group">
                 <label class="form-label" for="title">Title</label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" id="title" name="title" placeholder="Title">
             </div>
             <div class="form-group">
@@ -74,14 +85,43 @@
             <div class="form-group">
                 <label class="form-label" for="price">Price</label>
                 <input type="number" class="form-control" id="price" name="price" placeholder="Price">
+=======
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title') }}">
+                @if ($errors->has('title'))
+                <div class="error">{{ $errors->first('title') }}</div>
+                @endif
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="details">Details</label>
+                <input type="text" class="form-control" id="details" name="details" placeholder="Details" value="{{ old('details') }}">
+                @if ($errors->has('title'))
+                <div class="error">{{ $errors->first('details') }}</div>
+                @endif
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="Price" value="{{ old('price') }}">
+                @if ($errors->has('title'))
+                <div class="error">{{ $errors->first('price') }}</div>
+                @endif
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
             </div>
             <div class="form-group">
                 <label class="form-label" for="category_id">Category Name</label>
                 <select class="form-select" id="category_id" name="category_id">
                     @foreach($categories as $category)
+<<<<<<< HEAD
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
+=======
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('title'))
+                <div class="error">{{ $errors->first('category_id') }}</div>
+                @endif
+>>>>>>> 303e8c2 (تحضير التعديلات قبل الـ pull)
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary">Add</button>
